@@ -28,6 +28,25 @@ public class Software extends Product{
     public void setOs(String os) {
         this.os = os;
     }
+    @Override
+    public boolean equals(Object obj){
+        boolean isTrue=false;
+        if(obj == this ){
+            return true;
+        }
+
+        if(!(obj instanceof Software)){
+            return false;
+        }
+        //type cast obj to Book
+        Software software = (Software) obj;
+        if((software.getOs().equalsIgnoreCase(this.getOs()))||
+                (software.getProgrammer().equalsIgnoreCase(this.getProgrammer()))||
+                (software.getPlatform().equalsIgnoreCase(this.getPlatform()))){
+            isTrue = true;
+        }
+        return isTrue;
+    }
 
     @Override
     public String toString(){
