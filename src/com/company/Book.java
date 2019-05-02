@@ -30,6 +30,29 @@ public class Book extends Product{
     }
 
     @Override
+    public boolean equals(Object obj){
+        //this equals method is case-sensitive
+        if(obj == null){
+            return false;
+        }
+
+        if(obj instanceof Book){
+            Book book = (Book)obj;
+            if(book.getTitle().length()!= this.getTitle().length()
+                    &&book.getAuthor().length()!= this.getAuthor().length()){
+                return false;
+            }
+            for (int i=0; i<book.getTitle().length();i++){
+                if(book.getTitle().charAt(i)!=this.getTitle().charAt(i)){
+                    return false;
+                }
+            }
+        }
+        //if this statement is reached then the objects are equal
+        return  true;
+    }
+
+    @Override
     public String toString(){
         return "Title: "+getTitle()+
                 "\nAuthor: "+getAuthor()+
