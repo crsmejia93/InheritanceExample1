@@ -35,6 +35,32 @@ public class Product {
 
     }
 
+    @Override
+    public boolean equals(Object obj){
+        //this equals method is case-sensitive
+        if(obj == null){
+            return false;
+        }
+
+        if(obj instanceof Product){
+            Product product = (Product)obj;
+            if(product.getCode().length()!= this.getCode().length()
+                    &&product.getDescription().length()!= this.getDescription().length()&&
+                    product.getPrice()==this.getPrice()){
+                return false;
+            }
+
+            for (int i=0; i<product.getCode().length();i++){
+                if(product.getCode().charAt(i)!=this.getCode().charAt(i)){
+                    return false;
+                }
+            }
+        }
+        //if this statement is reached then the objects are equal
+        return  true;
+    }
+
+
     // Create public access for the count variable
     public static int getCount() {
         return count;

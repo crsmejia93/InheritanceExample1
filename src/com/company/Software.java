@@ -30,6 +30,30 @@ public class Software extends Product{
     }
 
     @Override
+    public boolean equals(Object obj){
+        //this equals method is case-sensitive
+        if(obj == null){
+            return false;
+        }
+
+        if(obj instanceof Software){
+            Software software = (Software)obj;
+            if(software.getOs().length()!= this.getOs().length()
+                    &&software.getPlatform().length()!= this.getPlatform().length()){
+                return false;
+            }
+
+            for (int i=0; i<software.getOs().length();i++){
+                if(software.getOs().charAt(i)!=this.getOs().charAt(i)){
+                    return false;
+                }
+            }
+        }
+        //if this statement is reached then the objects are equal
+        return  true;
+    }
+
+    @Override
     public String toString(){
         return "OS: "+getOs()+"\nProgrammer: "
                 +getProgrammer()+"\nPlatform: "+getPlatform()+"\n"
